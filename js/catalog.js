@@ -36,13 +36,20 @@ function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
-  var selectProduct = Product.allProducts.find((element) => element.name === document.getElementById('items').value);
-  var selectedQuantity = parseInt(document.getElementById('quantity').value);
-  cart.addItems(selectProduct, selectedQuantity);
+  var selectProduct = Product.allProducts.find(
+    (element) => element.name === document.getElementById("items").value
+  );
+  var selectedQuantity = document.getElementById("quantity");
+  cart.addItem(selectProduct, parseInt(selectedQuantity.value));
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() {
+  var itemCount = document.getElementById("itemCount");
+  itemCount.textContent = ": " + cart.items.length;
+  var catalog = document.getElementById("catalog");
+  catalog.reset();
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
